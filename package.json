@@ -1,0 +1,27 @@
+{
+  "name": "MockServer",
+  "version": "1.0.0",
+  "description": "a quick REST and static server to help the front-end to develop and prototype separate from the back-end progress ",
+  "main": "./src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:etoah/MockServer.git"
+  },
+  "keywords": [
+    "MockServer",
+    "mock",
+    "rest"
+  ],
+  "author": "Lucien",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/etoah/MockServer/issues"
+  },
+  "homepage": "https://github.com/etoah/MockServer",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "cors": "^2.7.1",
+    "express": "^4.12.4",
+    "fakexmlhttprequest": "0.0.1"
+  }
+}
