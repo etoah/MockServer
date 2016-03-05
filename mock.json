@@ -27,19 +27,6 @@
                 ]
               }
             }
-        },
-        {
-            "path":"/a",
-            "type":"get",
-            "response":{
-                "_id":1,
-                "foo":"bar"
-            }
-        },
-        {
-            "path":"/static",
-            "type":"static",
-            "response":"www"
         }
     ]
 }

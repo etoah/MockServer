@@ -34,10 +34,8 @@ module.exports=function (confFile,expressApp){
                 console.info(req.query);
                 console.info("body:");
                 console.info(req.body)
-
+                //Todo route.path==="/"?
                 res.json(route.response);
-  
-
             })
         }
 
@@ -46,6 +44,10 @@ module.exports=function (confFile,expressApp){
 
     console.info("all routes:")
     routes.forEach(makeRoute)
+    //show config
+    app.get("/$",function(req,res) {
+        res.json(conf);
+    });
 
     return expressApp||app
         .listen(port,function(){
