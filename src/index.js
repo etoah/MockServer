@@ -1,10 +1,13 @@
 var express=require('express'),
     cors = require('cors'),
     bodyParser = require('body-parser'),
-    fs=require('fs');
+    fs=require('fs'),
+    jsonFormat = require("json-format");
+
 
 module.exports=function (confFile,expressApp){
-    var conf=JSON.parse(fs.readFileSync(confFile));
+    var confString=fs.readFileSync(confFile);
+    var conf=JSON.parse(confString);
     var app=expressApp||express(),
         port=conf.port,
         routes=conf.routes;
@@ -34,9 +37,10 @@ module.exports=function (confFile,expressApp){
                 console.info(req.query);
                 console.info("body:");
                 console.info(req.body)
-                //Todo route.path==="/"?
                 res.json(route.response);
             })
+            
+
         }
 
         console.log(`${type} ${route.path}`)
@@ -45,10 +49,11 @@ module.exports=function (confFile,expressApp){
     console.info("all routes:")
     routes.forEach(makeRoute)
     //show config
-    app.get("/$",function(req,res) {
-        res.json(conf);
+    app.get("/c",function(req,res) {
+        res.send("<pre>"+jsonFormat(conf)+"</pre>");
     });
 
+    
     return expressApp||app
         .listen(port,function(){
             console.log("server is listening on "+port)
