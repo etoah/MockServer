@@ -25,7 +25,8 @@
     "fakexmlhttprequest": "0.0.1",
     "json-format": "^0.1.2",
     "liftoff": "^2.2.0",
+    "minimist": "^1.2.0",
     "nodemon": "^1.9.1",
-    "watchr": "^2.4.13"
+    "v8flags": "^2.0.11"
   }
 }
