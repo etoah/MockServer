@@ -1,5 +1,6 @@
 var mock=require('./src/index');
 var watchr = require('watchr');
+var Liftoff = require('liftoff');
 // Watch a directory or file 
 //console.log('Watch our paths');
 mock('mock.json');
@@ -22,4 +23,12 @@ watchr.watch({
 			console.log('watching everything completed');
 		}
 	}
+});
+
+
+var cli = new Liftoff({
+  name: 'mockServer',
+  completions: completion,
+  extensions: interpret.jsVariants,
+  v8flags: v8flags,
 });
