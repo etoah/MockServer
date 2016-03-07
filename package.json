@@ -23,6 +23,8 @@
     "cors": "^2.7.1",
     "express": "^4.12.4",
     "fakexmlhttprequest": "0.0.1",
-    "json-format": "^0.1.2"
+    "json-format": "^0.1.2",
+    "nodemon": "^1.9.1",
+    "watchr": "^2.4.13"
   }
 }
