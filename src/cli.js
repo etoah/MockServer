@@ -15,8 +15,6 @@ var cli = new Liftoff({
 });
 
 
-
-
 module.exports=function CLI(invoke)
 {
     var argv = require('minimist')(process.argv.slice(2));

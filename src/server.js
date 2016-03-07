@@ -5,9 +5,7 @@ var express=require('express'),
     jsonFormat = require("json-format");
 
 
-module.exports=function (confFile,expressApp){
-    var confString=fs.readFileSync(confFile);
-    var conf=JSON.parse(confString);
+module.exports=function (conf,expressApp){
     var app=expressApp||express(),
         port=conf.port,
         routes=conf.routes;
