@@ -1,9 +1,9 @@
 
-var Liftoff = require('liftoff');
-var v8flags = require('v8flags');
+const Liftoff = require('liftoff');
+const v8flags = require('v8flags');
 
 
-var cli = new Liftoff({
+const cli = new Liftoff({
   name: 'mockServer',
  // completions: completion,
   extensions: {
