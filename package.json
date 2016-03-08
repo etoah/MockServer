@@ -2,7 +2,10 @@
   "name": "mockserverjs",
   "version": "0.0.1",
   "description": "a quick REST and static server to help the front-end to develop and prototype separate from the back-end progress ",
-  "main": "./src/index.js",
+  "main": "index.js",
+  "bin": {
+    "mockserver": "./src/cli.js"
+  },
   "repository": {
     "type": "git",
     "url": "git@github.com:etoah/MockServer.git"
@@ -23,6 +26,7 @@
     "cors": "^2.7.1",
     "express": "^4.12.4",
     "fakexmlhttprequest": "0.0.1",
+    "interpret": "^1.0.0",
     "json-format": "^0.1.2",
     "liftoff": "^2.2.0",
     "minimist": "^1.2.0",
