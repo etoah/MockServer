@@ -2,20 +2,10 @@ var express=require('express'),
     cors = require('cors'),
     bodyParser = require('body-parser'),
     fs=require('fs'),
-    jsonFormat = require("json-format");
+    jsonFormat = require("json-format"),
+    requestShow=require("./middleware/requestshow.js");
 
 
-function showRequest(req,res) {
-     console.info(new Date()+":new request----------------------------------------------------------------------------------------- ");
-                console.info("headers:");
-                console.info(req.headers);
-                console.info("params:");
-                console.info(req.params);
-                console.info("query:");
-                console.info(req.query);
-                console.info("body:");
-                console.info(req.body);
-}
 
 
 module.exports=function (conf,expressApp){
@@ -38,8 +28,7 @@ module.exports=function (conf,expressApp){
             app.use(route.path, express.static(route.response))
             break
         default:
-            app[type](route.path,function(req,res){
-                showRequest(req,res);
+            app[type](route.path,requestShow,function(req,res){
                 if(typeof route.response ==="function")
                 {
                     res.send(route.response(req,res))
