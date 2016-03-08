@@ -5,6 +5,19 @@ var express=require('express'),
     jsonFormat = require("json-format");
 
 
+function showRequest(req,res) {
+     console.info(new Date()+":new request----------------------------------------------------------------------------------------- ");
+                console.info("headers:");
+                console.info(req.headers);
+                console.info("params:");
+                console.info(req.params);
+                console.info("query:");
+                console.info(req.query);
+                console.info("body:");
+                console.info(req.body);
+}
+
+
 module.exports=function (conf,expressApp){
     var app=expressApp||express(),
         port=conf.port,
@@ -26,16 +39,15 @@ module.exports=function (conf,expressApp){
             break
         default:
             app[type](route.path,function(req,res){
-                console.info(new Date()+":new request----------------------------------------------------------------------------------------- ");
-                console.info("headers:");
-                console.info(req.headers);
-                console.info("params:");
-                console.info(req.params);
-                console.info("query:");
-                console.info(req.query);
-                console.info("body:");
-                console.info(req.body)
-                res.json(route.response);
+                showRequest(req,res);
+                if(typeof route.response ==="function")
+                {
+                    res.send(route.response(req,res))
+                }
+                else
+                {
+                     res.json(route.response);
+                }
             })
         }
 
@@ -48,8 +60,6 @@ module.exports=function (conf,expressApp){
     app.get("/c",function(req,res) {
         res.send("<pre>"+jsonFormat(conf)+"</pre>");
     });
-
-    
     return expressApp||app
         .listen(port,function(){
             console.log("server is listening on "+port)

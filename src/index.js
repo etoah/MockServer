@@ -1,6 +1,6 @@
 var server=require('./server');
-var CLI=require('./cli');
-var config=require("../mockserverfile.js");
+//var CLI=require('./cli');
+//var config=require("../mockserverfile.js");
 // var cli=CLI(function (argv,env) {
 //      console.log("hello world!!");
 // //   console.log('my environment is:', env);
@@ -8,4 +8,4 @@ var config=require("../mockserverfile.js");
 // //   console.log('my liftoff config is:', this);
 // });
 
-module.exports=server(config);
+module.exports=server;
