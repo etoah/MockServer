@@ -13,9 +13,11 @@ nodemon app
 
 ### 2. npm 
 
-npm install mockserverjs
+```
+npm install mockserverjs  
 mockserver init 
 mock server start
+```
 
 
 
