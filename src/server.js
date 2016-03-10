@@ -5,18 +5,7 @@ var express=require('express'),
     jsonFormat = require("json-format"),
     requestShow=require("./middleware/requestshow.js");
 
-
-
-
-module.exports=function (conf,expressApp){
-    var app=expressApp||express(),
-        port=conf.port,
-        routes=conf.routes;
-    // Enable Cross Origin Resource Sharing
-    app.use(cors());
-    app.use(bodyParser.json());
-    app.use(bodyParser.urlencoded({ extended: false }));
-    function makeRoute(route){
+function makeRoute(route,app){
         if(!(route.path && route.response)){
             console.error("path and response must be specified")
             return
@@ -35,20 +24,34 @@ module.exports=function (conf,expressApp){
                 }
                 else
                 {
-                     res.json(route.response);
+                     res.send(route.response);
                 }
             })
-        }
-
-        console.log(`${type} ${route.path}`)
     }
+    console.log(`${type} ${route.path}`);
+}
 
+
+module.exports=function (conf,expressApp){
+    var app=expressApp||express(),
+        port=conf.port,
+        routes=conf.routes;
+    // Enable Cross Origin Resource Sharing
+    app.use(cors());
+    app.use(bodyParser.json());
+    app.use(bodyParser.urlencoded({ extended: false }));
+
+    // add config route
     console.info("all routes:")
-    routes.forEach(makeRoute)
+    routes.forEach(function(route){
+           makeRoute(route,app);
+    })
+    
     //show config
     app.get("/c",function(req,res) {
         res.send("<pre>"+jsonFormat(conf)+"</pre>");
     });
+    //start server
     return expressApp||app
         .listen(port,function(){
             console.log("server is listening on "+port)

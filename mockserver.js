@@ -2,10 +2,15 @@ module.exports=
 {
     "port":10000,
     "routes":[
+         {
+            "path":"/public",
+            "type":"static",
+            "response":	'static'
+        },
         {
             "path":"/",
             "type":"get",
-            "response":"MockServer works" 
+            "response":"<img src='./public/mock.jpg' /> <br><h1>MockServer works!</h1>" 
         },
         {
             "path":"/getlist",
