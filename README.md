@@ -13,7 +13,7 @@ nodemon app
 
 ### 2. npm 
 
-`规划中`
+`doing`
 ```
 npm install mockserverjs  
 mockserver init 

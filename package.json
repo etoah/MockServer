@@ -1,6 +1,6 @@
 {
   "name": "mockserverjs",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "a quick REST and static server to help the front-end to develop and prototype separate from the back-end progress ",
   "main": "index.js",
   "bin": {
