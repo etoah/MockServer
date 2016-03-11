@@ -5,7 +5,7 @@ var express=require('express'),
     jsonFormat = require("json-format"),
     requestShow=require("./middleware/requestshow.js");
 
-function makeRoute(route,app){
+function makeConfigRoute(route,app){
         if(!(route.path && route.response)){
             console.error("path and response must be specified")
             return
@@ -32,19 +32,21 @@ function makeRoute(route,app){
 }
 
 
+
 module.exports=function (conf,expressApp){
     var app=expressApp||express(),
         port=conf.port,
         routes=conf.routes;
     // Enable Cross Origin Resource Sharing
     app.use(cors());
+    
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: false }));
 
     // add config route
     console.info("all routes:")
     routes.forEach(function(route){
-           makeRoute(route,app);
+           makeConfigRoute(route,app);
     })
     
     //show config
